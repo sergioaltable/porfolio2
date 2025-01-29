@@ -13,6 +13,8 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: 
+      name: github-pages  # ✅ Agregar esta línea para evitar el error
 
     steps:
       - name: Checkout repository
