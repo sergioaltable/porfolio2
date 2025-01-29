@@ -1,0 +1,77 @@
+---
+const menuItems = [
+  { text: "About", href: "#about" },
+  { text: "Projects", href: "#projects" },
+  { text: "Gallery", href: "#gallery" },
+  { text: "Blog", href: "#blog" },
+  { text: "Contact", href: "#contact" }
+];
+---
+
+<header class="fixed w-full bg-light/90 dark:bg-dark/90 backdrop-blur-sm z-50 border-b border-gray-100 dark:border-gray-800" transition:animate="slide">
+  <nav class="max-w-prose mx-auto px-6 py-5">
+    <div class="flex items-center justify-between">
+      <a href="#" class="text-lg font-medium hover:text-accent transition-colors">Portfolio</a>
+      
+      <div class="hidden md:flex items-center space-x-8">
+        {menuItems.map(item => (
+          <a 
+            href={item.href}
+            class="text-secondary hover:text-primary dark:hover:text-light transition-colors text-sm"
+            transition:name={`nav-${item.text.toLowerCase()}`}
+          >
+            {item.text}
+          </a>
+        ))}
+        <button
+          id="themeToggle"
+          class="p-2 text-secondary hover:text-primary dark:hover:text-light transition-colors"
+          aria-label="Toggle dark mode"
+        >
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            class="h-5 w-5 dark:hidden"
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor"
+          >
+            <path 
+              stroke-linecap="round" 
+              stroke-linejoin="round" 
+              stroke-width="2" 
+              d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+            />
+          </svg>
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            class="h-5 w-5 hidden dark:block"
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor"
+          >
+            <path 
+              stroke-linecap="round" 
+              stroke-linejoin="round" 
+              stroke-width="2" 
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const themeToggle = document.getElementById('themeToggle');
+  
+  function toggleTheme() {
+    const html = document.documentElement;
+    html.classList.toggle('dark');
+    
+    const isDark = html.classList.contains('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  }
+
+  themeToggle?.addEventListener('click', toggleTheme);
+</script>

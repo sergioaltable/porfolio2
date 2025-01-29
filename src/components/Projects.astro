@@ -1,0 +1,59 @@
+---
+const projects = [
+  {
+    title: "E-commerce Platform",
+    description: "A scalable e-commerce solution built with React and Node.js, handling thousands of daily transactions.",
+    tags: ["React", "Node.js", "PostgreSQL"],
+    link: "#"
+  },
+  {
+    title: "Project Management Tool",
+    description: "Custom project management software for agile teams, improving productivity by 40%.",
+    tags: ["Vue.js", "Express", "MongoDB"],
+    link: "#"
+  },
+  {
+    title: "AI-Powered Analytics",
+    description: "Machine learning platform for business analytics, processing millions of data points daily.",
+    tags: ["Python", "TensorFlow", "AWS"],
+    link: "#"
+  }
+];
+---
+
+<section id="projects" class="py-24 bg-gray-light dark:bg-gray-800/20">
+  <div class="max-w-prose mx-auto px-6">
+    <div class="space-y-16 fade-in">
+      <div class="space-y-8">
+        <h2 class="text-3xl font-medium">Featured Projects</h2>
+        <p class="text-body text-secondary dark:text-gray-400">
+          A selection of projects that showcase my expertise in different technologies and domains.
+        </p>
+      </div>
+
+      <div class="space-y-8 stagger">
+        {projects.map(project => (
+          <a href={project.link} class="block group">
+            <article class="p-8 bg-white dark:bg-gray-800/50 rounded-lg hover-lift">
+              <div class="space-y-4">
+                <h3 class="text-xl font-medium group-hover:text-accent transition-colors">
+                  {project.title}
+                </h3>
+                <p class="text-secondary dark:text-gray-400">
+                  {project.description}
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  {project.tags.map(tag => (
+                    <span class="px-3 py-1 text-xs font-medium bg-gray-light dark:bg-gray-700/50 rounded-full">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </article>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

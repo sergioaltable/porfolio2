@@ -1,0 +1,66 @@
+---
+const posts = [
+  {
+    title: "Building Scalable Microservices with Node.js",
+    date: "2024-01-15",
+    excerpt: "Learn how to design and implement scalable microservices architecture using Node.js and Docker.",
+    tags: ["Node.js", "Microservices", "Docker"],
+    readTime: "8 min read"
+  },
+  {
+    title: "Advanced TypeScript Patterns for Enterprise Applications",
+    date: "2024-01-02",
+    excerpt: "Explore advanced TypeScript patterns and best practices for building maintainable enterprise applications.",
+    tags: ["TypeScript", "Patterns", "Enterprise"],
+    readTime: "12 min read"
+  },
+  {
+    title: "Implementing CI/CD Pipelines with GitHub Actions",
+    date: "2023-12-20",
+    excerpt: "A comprehensive guide to setting up automated CI/CD pipelines using GitHub Actions.",
+    tags: ["DevOps", "CI/CD", "GitHub"],
+    readTime: "10 min read"
+  }
+];
+---
+
+<section id="blog" class="py-24">
+  <div class="max-w-prose mx-auto px-6">
+    <div class="space-y-16 fade-in">
+      <div class="space-y-8">
+        <h2 class="text-3xl font-medium">Blog</h2>
+        <p class="text-body text-secondary dark:text-gray-400">
+          Thoughts and insights about software development, project management, and technology trends.
+        </p>
+      </div>
+
+      <div class="space-y-8 stagger">
+        {posts.map(post => (
+          <article class="group">
+            <a href="#" class="block p-6 bg-white dark:bg-gray-800/50 rounded-lg hover-lift">
+              <div class="space-y-4">
+                <div class="flex items-center gap-4 text-sm text-secondary dark:text-gray-400">
+                  <time datetime={post.date}>{new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</time>
+                  <span>{post.readTime}</span>
+                </div>
+                <h3 class="text-xl font-medium group-hover:text-accent transition-colors">
+                  {post.title}
+                </h3>
+                <p class="text-secondary dark:text-gray-400">
+                  {post.excerpt}
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  {post.tags.map(tag => (
+                    <span class="px-3 py-1 text-xs font-medium bg-gray-light dark:bg-gray-700/50 rounded-full">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

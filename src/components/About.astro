@@ -1,0 +1,42 @@
+---
+const skills = [
+  "JavaScript/TypeScript",
+  "React/Vue.js",
+  "Node.js",
+  "Python",
+  "AWS/Cloud",
+  "Agile/Scrum"
+];
+---
+
+<section id="about" class="py-24">
+  <div class="max-w-prose mx-auto px-6">
+    <div class="space-y-16 fade-in">
+      <div class="space-y-8">
+        <h2 class="text-3xl font-medium">About</h2>
+        <div class="space-y-4 text-body text-secondary dark:text-gray-400">
+          <p>
+            I'm a passionate Software Engineer with over 12 years of experience in building scalable applications
+            and leading development teams. My journey in technology has been driven by a constant desire to learn
+            and solve complex problems.
+          </p>
+          <p>
+            Throughout my career, I've successfully delivered enterprise-level applications, mentored junior developers,
+            and implemented efficient development processes that significantly improved team productivity.
+          </p>
+        </div>
+      </div>
+
+      <div class="space-y-8">
+        <h3 class="text-xl font-medium">Technical Skills</h3>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 stagger">
+          {skills.map(skill => (
+            <div class="p-4 bg-gray-light dark:bg-gray-800/50 rounded-lg hover-lift">
+              <span class="text-sm font-medium">{skill}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

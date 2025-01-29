@@ -1,0 +1,87 @@
+---
+const education = [
+  {
+    title: "Master in Computer Science",
+    institution: "Technical University of Madrid",
+    year: "2010-2012",
+    description: "Specialized in Software Engineering and Distributed Systems"
+  },
+  {
+    title: "Bachelor in Computer Engineering",
+    institution: "University of Barcelona",
+    year: "2006-2010",
+    description: "Focus on Software Development and Algorithms"
+  }
+];
+
+const certifications = [
+  {
+    title: "AWS Certified Solutions Architect",
+    issuer: "Amazon Web Services",
+    year: "2023",
+    badge: "aws-architect"
+  },
+  {
+    title: "Professional Scrum Master",
+    issuer: "Scrum.org",
+    year: "2022",
+    badge: "psm"
+  },
+  {
+    title: "Google Cloud Professional Developer",
+    issuer: "Google",
+    year: "2021",
+    badge: "gcp-dev"
+  }
+];
+---
+
+<section id="education" class="py-24">
+  <div class="max-w-prose mx-auto px-6">
+    <div class="space-y-16 fade-in">
+      <div class="space-y-8">
+        <h2 class="text-3xl font-medium">Education & Certifications</h2>
+        <p class="text-body text-secondary dark:text-gray-400">
+          My academic background and professional certifications that have shaped my expertise.
+        </p>
+      </div>
+
+      <div class="space-y-12">
+        <div class="space-y-8">
+          <h3 class="text-xl font-medium">Education</h3>
+          <div class="space-y-6 stagger">
+            {education.map(item => (
+              <div class="p-6 bg-white dark:bg-gray-800/50 rounded-lg hover-lift">
+                <div class="space-y-2">
+                  <div class="flex justify-between items-start">
+                    <h4 class="font-medium">{item.title}</h4>
+                    <span class="text-sm text-secondary dark:text-gray-400">{item.year}</span>
+                  </div>
+                  <p class="text-secondary dark:text-gray-400">{item.institution}</p>
+                  <p class="text-sm text-secondary dark:text-gray-400">{item.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="space-y-8">
+          <h3 class="text-xl font-medium">Certifications</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 stagger">
+            {certifications.map(cert => (
+              <div class="p-6 bg-white dark:bg-gray-800/50 rounded-lg hover-lift">
+                <div class="space-y-2">
+                  <div class="flex justify-between items-start">
+                    <h4 class="font-medium">{cert.title}</h4>
+                    <span class="text-sm text-secondary dark:text-gray-400">{cert.year}</span>
+                  </div>
+                  <p class="text-secondary dark:text-gray-400">{cert.issuer}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

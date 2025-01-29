@@ -1,0 +1,222 @@
+---
+const galleryImages = [
+  {
+    id: 1,
+    title: "Design System Implementation",
+    category: "UI/UX Design",
+    imageUrl: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop&q=60",
+  },
+  {
+    id: 2,
+    title: "Mobile App Development",
+    category: "Development",
+    imageUrl: "https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?w=800&auto=format&fit=crop&q=60",
+  },
+  {
+    id: 3,
+    title: "Cloud Architecture",
+    category: "Infrastructure",
+    imageUrl: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&auto=format&fit=crop&q=60",
+  },
+  {
+    id: 4,
+    title: "Data Visualization",
+    category: "Analytics",
+    imageUrl: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&auto=format&fit=crop&q=60",
+  },
+  {
+    id: 5,
+    title: "AI Integration Project",
+    category: "Machine Learning",
+    imageUrl: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&auto=format&fit=crop&q=60",
+  },
+  {
+    id: 6,
+    title: "Blockchain Implementation",
+    category: "Web3",
+    imageUrl: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop&q=60",
+  }
+];
+---
+
+<section id="gallery" class="py-24">
+  <div class="max-w-prose mx-auto px-6">
+    <div class="space-y-16 fade-in">
+      <div class="space-y-8">
+        <h2 class="text-3xl font-medium">Project Gallery</h2>
+        <p class="text-body text-secondary dark:text-gray-400">
+          Visual showcase of selected projects and technical implementations.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 stagger">
+        {galleryImages.map(image => (
+          <div 
+            class="group relative aspect-[4/3] overflow-hidden rounded-lg bg-gray-light dark:bg-gray-800/50 hover-lift cursor-pointer"
+            data-gallery-item
+            data-image-id={image.id}
+          >
+            <img
+              src={image.imageUrl}
+              alt={image.title}
+              class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                <h3 class="text-lg font-medium">{image.title}</h3>
+                <p class="text-sm text-gray-200">{image.category}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div id="galleryModal" class="fixed inset-0 z-50 hidden">
+  <div class="absolute inset-0 bg-black/90 backdrop-blur-sm"></div>
+  
+  <div class="relative w-full h-full flex items-center justify-center p-4">
+    <!-- Close button -->
+    <button id="closeModal" class="absolute top-4 right-4 text-white hover:text-accent z-10">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <!-- Navigation buttons -->
+    <button id="prevImage" class="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-accent z-10">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+    
+    <button id="nextImage" class="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-accent z-10">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+
+    <!-- Image container -->
+    <div class="relative max-w-5xl w-full h-full flex items-center justify-center">
+      <img id="modalImage" src="" alt="" class="max-h-[80vh] w-auto object-contain" />
+      <div id="modalCaption" class="absolute bottom-4 left-0 right-0 text-center text-white">
+        <h3 class="text-xl font-medium"></h3>
+        <p class="text-sm text-gray-200"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const galleryData = {
+    images: [
+      {
+        id: 1,
+        title: "Design System Implementation",
+        category: "UI/UX Design",
+        imageUrl: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop&q=60",
+      },
+      {
+        id: 2,
+        title: "Mobile App Development",
+        category: "Development",
+        imageUrl: "https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?w=800&auto=format&fit=crop&q=60",
+      },
+      {
+        id: 3,
+        title: "Cloud Architecture",
+        category: "Infrastructure",
+        imageUrl: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&auto=format&fit=crop&q=60",
+      },
+      {
+        id: 4,
+        title: "Data Visualization",
+        category: "Analytics",
+        imageUrl: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&auto=format&fit=crop&q=60",
+      },
+      {
+        id: 5,
+        title: "AI Integration Project",
+        category: "Machine Learning",
+        imageUrl: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&auto=format&fit=crop&q=60",
+      },
+      {
+        id: 6,
+        title: "Blockchain Implementation",
+        category: "Web3",
+        imageUrl: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop&q=60",
+      }
+    ]
+  };
+
+  let currentImageIndex = 0;
+  const modal = document.getElementById('galleryModal');
+  const modalImage = document.getElementById('modalImage');
+  const modalCaption = document.getElementById('modalCaption');
+  const closeBtn = document.getElementById('closeModal');
+  const prevBtn = document.getElementById('prevImage');
+  const nextBtn = document.getElementById('nextImage');
+
+  // Open modal
+  document.querySelectorAll('[data-gallery-item]').forEach(item => {
+    item.addEventListener('click', () => {
+      const imageId = parseInt(item.dataset.imageId);
+      currentImageIndex = galleryData.images.findIndex(img => img.id === imageId);
+      updateModal();
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  // Close modal
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  function closeModal() {
+    modal.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
+  // Navigation
+  prevBtn.addEventListener('click', () => {
+    currentImageIndex = (currentImageIndex - 1 + galleryData.images.length) % galleryData.images.length;
+    updateModal();
+  });
+
+  nextBtn.addEventListener('click', () => {
+    currentImageIndex = (currentImageIndex + 1) % galleryData.images.length;
+    updateModal();
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (modal.classList.contains('hidden')) return;
+    
+    switch (e.key) {
+      case 'ArrowLeft':
+        prevBtn.click();
+        break;
+      case 'ArrowRight':
+        nextBtn.click();
+        break;
+      case 'Escape':
+        closeModal();
+        break;
+    }
+  });
+
+  function updateModal() {
+    const image = galleryData.images[currentImageIndex];
+    modalImage.src = image.imageUrl;
+    modalImage.alt = image.title;
+    modalCaption.querySelector('h3').textContent = image.title;
+    modalCaption.querySelector('p').textContent = image.category;
+  }
+</script>
